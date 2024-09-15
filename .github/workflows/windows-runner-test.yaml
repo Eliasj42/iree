@@ -1,0 +1,16 @@
+name: Windows Runner Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - windows-workflow
+
+jobs:
+  test-windows-runner:
+    runs-on: azure-windows-scale
+
+    steps:
+    - name: Hello World
+      run: echo "Hello World!"
