@@ -47,6 +47,6 @@ jobs:
       - name: "Configuring MSVC"
         uses: ilammy/msvc-dev-cmd@v1.13.0
       - name: "Building IREE"
-        run: CMAKE_OBJECT_PATH_MAX=200 ./build_tools/cmake/build_all.sh "${BUILD_DIR}"
+        run: ./build_tools/cmake/build_all.sh "${BUILD_DIR}"
       - name: "Testing IREE"
         run: ./build_tools/cmake/ctest_all.sh "${BUILD_DIR}"
