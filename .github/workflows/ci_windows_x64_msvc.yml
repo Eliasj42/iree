@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   windows_x64_msvc:
-    runs-on: azure-windows-scale-2
+    runs-on: windows-2
     defaults:
       run:
         shell: bash
