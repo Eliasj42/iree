@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   windows_x64_msvc:
-    runs-on: windows-2
+    runs-on: arc4-set
     defaults:
       run:
         shell: bash
