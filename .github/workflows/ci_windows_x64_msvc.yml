@@ -30,7 +30,9 @@ jobs:
       BUILD_DIR: build-windows
     steps:
       - name: Check Git version
-        run: git --version
+        run: |
+          choco install git.install -y
+          git --version
       - name: "Checking out repository"
         uses: actions/checkout@v4.1.7
         with:
