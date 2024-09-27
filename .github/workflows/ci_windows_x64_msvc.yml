@@ -29,6 +29,8 @@ jobs:
     env:
       BUILD_DIR: build-windows
     steps:
+      - name: Check Git version
+        run: git --version
       - name: "Checking out repository"
         uses: actions/checkout@v4.1.7
         with:
