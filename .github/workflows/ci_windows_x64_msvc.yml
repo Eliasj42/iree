@@ -29,18 +29,10 @@ jobs:
     env:
       BUILD_DIR: build-windows
     steps:
-      - name: Check Git version
-        run: |
-          choco install git.install -y
-          git --version
       - name: "Checking out repository"
         uses: actions/checkout@v4.1.7
         with:
           submodules: true
-      - name: "Setting up Python"
-        uses: actions/setup-python@v5.1.0
-        with:
-          python-version: "3.10" # Needs pybind >= 2.10.1 for Python >= 3.11
       - name: "Installing Python packages"
         run: |
           python3 -m venv .venv
