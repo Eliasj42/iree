@@ -29,12 +29,12 @@ jobs:
     env:
       BUILD_DIR: build-windows
     steps:
+      - name: "Extending Windows Path Length"
+        run: powershell.exe -Command New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
       - name: "Checking out repository"
         uses: actions/checkout@v4.1.7
         with:
           submodules: true
-      - name: "Extending Windows Path Length"
-        run: New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
       - name: "Setting up Python"
         uses: actions/setup-python@v5.1.0
         with:
