@@ -33,9 +33,6 @@ jobs:
         uses: actions/checkout@v4.1.7
         with:
           submodules: true
-      - name: "Clear Python cache"
-        run: |
-          rm -rf ~/.python
       - name: "Setting up Python"
         uses: actions/setup-python@v4
         with:
