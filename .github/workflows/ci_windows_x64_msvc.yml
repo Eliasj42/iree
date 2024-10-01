@@ -25,7 +25,7 @@ jobs:
     runs-on: arc-runner-set
     defaults:
       run:
-        shell: bash
+        shell: powershell
     env:
       BUILD_DIR: build-windows
     steps:
