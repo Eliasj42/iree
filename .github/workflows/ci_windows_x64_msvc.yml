@@ -61,5 +61,6 @@ jobs:
         run: |
           mkdir ../iree-build/
           cmake -G Ninja -B ../iree-build/ .
+          cmake --build ../iree-build/
       - name: "Testing IREE"
         run: ./build_tools/cmake/ctest_all.sh "${BUILD_DIR}"
