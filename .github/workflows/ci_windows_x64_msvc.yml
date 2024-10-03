@@ -50,7 +50,16 @@ jobs:
           choco install visualstudio2022-workload-nativedesktop -y
       - name: "Configuring MSVC 2"
         uses: ilammy/msvc-dev-cmd@v1.13.0
+      - name: "Installing iree reqs"
+        run: |
+          choco install cmake
+          choco install ninja
+          choco install Ninja
+          Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
+          refreshenv
       - name: "Building IREE"
-        run: ./build_tools/cmake/build_all.sh "${BUILD_DIR}"
+        run: |
+          mkdir ../iree-build/
+          cmake -G Ninja -B ../iree-build/ .
       - name: "Testing IREE"
         run: ./build_tools/cmake/ctest_all.sh "${BUILD_DIR}"
