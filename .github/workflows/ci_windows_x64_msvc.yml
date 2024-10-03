@@ -23,9 +23,6 @@ concurrency:
 jobs:
   windows_x64_msvc:
     runs-on: arc-runner-set
-    defaults:
-      run:
-        shell: bash
     env:
       BUILD_DIR: build-windows
     steps:
