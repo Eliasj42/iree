@@ -46,7 +46,7 @@ jobs:
       - name: "Configuring MSVC 1"
         run: |
           choco install visualstudio2022buildtools -y 
-          choco install visualstudio2022community --package-parameters "--add Microsoft.VisualStudio.Workload.CoreEditor --add Microsoft.VisualStudio.Workload.ManagedDesktop" -y
+          choco install visualstudio2022community --package-parameters "--add Microsoft.VisualStudio.Workload.CoreEditor --add Microsoft.VisualStudio.Workload.ManagedDesktop --add Microsoft.VisualStudio.Workload.DesktopDevelopmentWithC++" -y
       - name: "Configuring MSVC 2"
         uses: ilammy/msvc-dev-cmd@v1.13.0
       - name: "Building IREE"
