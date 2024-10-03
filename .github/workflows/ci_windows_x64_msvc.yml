@@ -28,6 +28,8 @@ jobs:
     steps:
       - name: "Install choco reqs"
         run: choco install git.install -y
+        run: choco install visualstudio2022buildtools -y 
+        run: choco install visualstudio2022community --package-parameters "--add Microsoft.VisualStudio.Workload.CoreEditor --add Microsoft.VisualStudio.Workload.ManagedDesktop" -y
       - name: "Checking out repository"
         uses: actions/checkout@v4.1.7
         with:
