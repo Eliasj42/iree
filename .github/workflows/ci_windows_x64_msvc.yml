@@ -29,8 +29,6 @@ jobs:
       - name: "Install choco reqs"
         run: |
           choco install git.install -y
-          choco install visualstudio2022buildtools -y 
-          choco install visualstudio2022community --package-parameters "--add Microsoft.VisualStudio.Workload.CoreEditor --add Microsoft.VisualStudio.Workload.ManagedDesktop" -y
       - name: "Checking out repository"
         uses: actions/checkout@v4.1.7
         with:
@@ -47,6 +45,9 @@ jobs:
       - name: "Installing requirements"
         run: choco install ccache --yes
       - name: "Configuring MSVC"
+        run: |
+          choco install visualstudio2022buildtools -y 
+          choco install visualstudio2022community --package-parameters "--add Microsoft.VisualStudio.Workload.CoreEditor --add Microsoft.VisualStudio.Workload.ManagedDesktop" -y
         uses: ilammy/msvc-dev-cmd@v1.13.0
       - name: "Building IREE"
         run: ./build_tools/cmake/build_all.sh "${BUILD_DIR}"
