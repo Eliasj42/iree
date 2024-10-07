@@ -27,8 +27,7 @@ jobs:
       BUILD_DIR: build-windows
     steps:
       - name: "Install choco reqs"
-        run: |
-          Get-PSDrive -PSProvider FileSystem | Format-Table Name, Used, Free
+        run: Get-PSDrive -PSProvider FileSystem | Format-Table Name, Used, Free
       - name: "Checking out repository"
         uses: actions/checkout@v4.1.7
         with:
