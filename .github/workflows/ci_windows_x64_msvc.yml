@@ -27,7 +27,7 @@ jobs:
       BUILD_DIR: build-windows
     steps:
       - name: "Install choco reqs"
-        run: Get-PSDrive | Format-Table Name, Used, Free
+        run: Get-PSDrive -PSProvider FileSystem | Format-Table Name, Used, Free
       - name: "Checking out repository"
         uses: actions/checkout@v4.1.7
         with:
@@ -58,7 +58,9 @@ jobs:
           Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
           refreshenv
       - name: "check space"
-        run: Get-PSDrive | Format-Table Name, Used, Free
+        run: |
+          Get-PSDrive | Format-Table Name, Used, Free
+          Test-Path C:\mnt\azure
       - name: "Building IREE"
         run: |
           mkdir ../iree-build/
