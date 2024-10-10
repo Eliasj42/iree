@@ -30,6 +30,7 @@ jobs:
         run: |
           Get-PSDrive | Format-Table Name, Used, Free
           Test-Path C:\mnt\azure
+          Get-ChildItem -Path C:\mnt\azure
       - name: "Checking out repository"
         uses: actions/checkout@v4.1.7
         with:
