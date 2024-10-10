@@ -24,7 +24,7 @@ jobs:
   windows_x64_msvc:
     runs-on: arc-runner-set
     env:
-      BUILD_DIR: build-windows
+      BUILD_DIR: C:\mnt\azure\build-windows
     steps:
       - name: "Install choco reqs"
         run: |
@@ -67,8 +67,8 @@ jobs:
           Test-Path C:\mnt\azure
       - name: "Building IREE"
         run: |
-          mkdir ../iree-build/
-          cmake -G Ninja -B ../iree-build/ .
-          cmake --build ../iree-build/
+          mkdir C:\mnt\azure\build-windows
+          cmake -G Ninja -B C:\mnt\azure\build-windows .
+          cmake --build C:\mnt\azure\build-windows
       - name: "Testing IREE"
         run: ./build_tools/cmake/ctest_all.sh "${BUILD_DIR}"
