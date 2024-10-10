@@ -58,7 +58,7 @@ jobs:
           Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
           refreshenv
       - name: "check space"
-        run: Get-PSDrive -PSProvider FileSystem | Format-Table Name, Used, Free
+        run: Get-PSDrive | Format-Table Name, Used, Free
       - name: "Building IREE"
         run: |
           mkdir ../iree-build/
