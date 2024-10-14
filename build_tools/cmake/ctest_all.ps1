@@ -81,4 +81,4 @@ if ($excludedTests.Count -gt 0) {
 }
 
 Write-Host "*************** Running CTest ***************"
-Start-Process "ctest" -ArgumentList $ctestArgs -Wait -NoNewWindow
+Start-Process "ctest" -ArgumentList $ctestArgs -Wait -NoNewWindow -VV
