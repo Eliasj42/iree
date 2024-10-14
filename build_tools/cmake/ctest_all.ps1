@@ -80,5 +80,7 @@ if ($excludedTests.Count -gt 0) {
     $ctestArgs += "--exclude-regex", "($excludedTestsRegex)"
 }
 
+$ctestArgs += "-VV"
+
 Write-Host "*************** Running CTest ***************"
-Start-Process "ctest" -ArgumentList $ctestArgs -Wait -NoNewWindow -VV
+Start-Process "ctest" -ArgumentList $ctestArgs -Wait -NoNewWindow
