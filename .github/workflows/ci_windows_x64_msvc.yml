@@ -67,6 +67,7 @@ jobs:
           Test-Path C:\mnt\azure
       - name: "Building IREE"
         run: |
+          mkdir C:\mnt\azure\build-windows
           cmake -G Ninja -B C:\mnt\azure\build-windows .
           cmake --build C:\mnt\azure\build-windows
       - name: "Testing IREE"
