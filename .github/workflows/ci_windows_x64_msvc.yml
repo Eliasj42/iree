@@ -76,6 +76,7 @@ jobs:
           $env:PATH = "$gitPath;$env:PATH"
           bash --version
       - name: "Testing IREE"
+        shell: bash
         run: ./build_tools/cmake/ctest_all.ps1 "C:\mnt\azure\build-windows"
       #- name: "Clean up build dir"
       #  run: Remove-Item -Path "C:\mnt\azure\build-windows" -Recurse -Force
