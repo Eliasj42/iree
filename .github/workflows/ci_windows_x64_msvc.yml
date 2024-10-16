@@ -69,13 +69,14 @@ jobs:
         run: |
         #  mkdir C:\mnt\azure\build-windows
           cmake -G Ninja -B C:\mnt\azure\build-windows .
-          cmake --build C:\mnt\azure\build-windows --target iree-test-debs
+          cmake --build C:\mnt\azure\build-windows --target iree-test-deps
       - name: "Install Bash"
         run: |
           $gitPath = "C:\Program Files\Git\bin"
           $env:PATH = "$gitPath;$env:PATH"
           bash --version
       - name: "Testing IREE"
+        shell: bash
         run: ./build_tools/cmake/ctest_all.ps1 "C:\mnt\azure\build-windows"
       #- name: "Clean up build dir"
       #  run: Remove-Item -Path "C:\mnt\azure\build-windows" -Recurse -Force
