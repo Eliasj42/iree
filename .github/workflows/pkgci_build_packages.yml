@@ -6,6 +6,9 @@
 
 name: PkgCI Build Packages
 on:
+  push:
+    branches:
+      - windows-workflow
   workflow_call:
     inputs:
       package_version:
