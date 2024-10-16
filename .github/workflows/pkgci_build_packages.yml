@@ -19,11 +19,7 @@ jobs:
   linux_x86_64_release_packages:
     name: Linux Release (x86_64)
     runs-on:
-      - self-hosted # must come first
-      - runner-group=${{ github.event_name == 'pull_request' && 'presubmit' || 'postsubmit' }}
-      - environment=prod
-      - cpu
-      - os-family=Linux
+      - arc-runner-set # must come first
     strategy:
       fail-fast: false
     env:
