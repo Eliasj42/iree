@@ -65,11 +65,11 @@ jobs:
         run: |
           Get-PSDrive | Format-Table Name, Used, Free
           Test-Path C:\mnt\azure
-      #- name: "Building IREE"
-      #  run: |
-      #    mkdir C:\mnt\azure\build-windows
-      #    cmake -G Ninja -B C:\mnt\azure\build-windows .
-      #    cmake --build C:\mnt\azure\build-windows
+      - name: "Building IREE"
+        run: |
+          mkdir C:\mnt\azure\build-windows
+          cmake -G Ninja -B C:\mnt\azure\build-windows .
+          cmake --build C:\mnt\azure\build-windows --target iree-test-deps
       - name: "Install Bash"
         run: |
           $gitPath = "C:\Program Files\Git\bin"
