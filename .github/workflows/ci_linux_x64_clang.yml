@@ -28,8 +28,7 @@ jobs:
   linux_x64_clang:
     needs: setup
     if: contains(fromJson(needs.setup.outputs.enabled-jobs), 'linux_x64_clang')
-    runs-on:
-      - arc-runner-set
+    runs-on: arc-runner-set
     env:
       BUILD_DIR: full-build-dir
     steps:
