@@ -6,6 +6,9 @@
 
 name: PkgCI Test NVIDIA T4
 on:
+  push:
+    branches:
+      - windows-workflow
   workflow_call:
     inputs:
       artifact_run_id:
