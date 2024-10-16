@@ -20,11 +20,7 @@ on:
 jobs:
   test_t4:
     runs-on:
-      - self-hosted # must come first
-      - runner-group=${{ github.event_name == 'pull_request' && 'presubmit' || 'postsubmit' }}
-      - environment=prod
-      - gpu
-      - os-family=Linux
+      - arc-runner-set # must come first
     env:
       PACKAGE_DOWNLOAD_DIR: ${{ github.workspace }}/.packages
       BUILD_DIR: build-tests
