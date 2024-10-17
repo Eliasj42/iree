@@ -74,10 +74,10 @@ jobs:
           $gitPath = "C:\Program Files\Git\bin"
           $env:PATH += ";C:\Program Files\Git\bin;C:\Program Files\Git\usr\bin"
           [System.Environment]::GetEnvironmentVariable("PATH", "Process")
-          bash --version
+          "C:/Program Files/Git/bin/bash.exe" --version
       - name: "Testing IREE"
         run: |
-          $ctestArgs = @("--test-dir","C:\mnt\azure\build-windows" ,"--output-on-failure","-VV")
+          "C:/Program Files/Git/bin/bash.exe" -c "ctest --timeout 900 --test-dir $BUILD_DIR --output-on-failure -VV"
           ctest @ctestArgs
       #- name: "Clean up build dir"
       #  run: Remove-Item -Path "C:\mnt\azure\build-windows" -Recurse -Force
