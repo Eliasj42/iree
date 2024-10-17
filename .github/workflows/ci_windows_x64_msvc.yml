@@ -74,7 +74,7 @@ jobs:
           $gitPath = "C:\Program Files\Git\bin"
           $env:PATH += ";C:\Program Files\Git\bin;C:\Program Files\Git\usr\bin"
           [System.Environment]::GetEnvironmentVariable("PATH", "Process")
-          "C:/Program Files/Git/bin/bash.exe" --version
+          Test-Path -Path "C:/Program Files/Git/bin/bash.exe"
       - name: "Testing IREE"
         run: |
           "C:/Program Files/Git/bin/bash.exe" -c "ctest --timeout 900 --test-dir $BUILD_DIR --output-on-failure -VV"
