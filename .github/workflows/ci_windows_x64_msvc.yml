@@ -76,7 +76,7 @@ jobs:
           [System.Environment]::GetEnvironmentVariable("PATH", "Process")
           bash --version
       - name: "Testing IREE"
-        shell: "C:\Program Files\Git\usr\bin\bash"
+        shell: bash
         run: |
           $ctestArgs = @("--test-dir","C:\mnt\azure\build-windows" ,"--output-on-failure","-VV")
           ctest @ctestArgs
