@@ -77,7 +77,7 @@ jobs:
           bash --version
       - name: "Testing IREE"
         run: |
-          $ctestArgs = @("--test-dir", $BUILD_DIR,"--output-on-failure","-VV")
+          $ctestArgs = @("--test-dir","C:\mnt\azure\build-windows" ,"--output-on-failure","-VV")
           ctest @ctestArgs
       #- name: "Clean up build dir"
       #  run: Remove-Item -Path "C:\mnt\azure\build-windows" -Recurse -Force
