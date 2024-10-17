@@ -65,16 +65,17 @@ jobs:
         run: |
           Get-PSDrive | Format-Table Name, Used, Free
           Test-Path C:\mnt\azure
-      - name: "Building IREE"
-        run: |
-          cmake -G Ninja -B C:\mnt\azure\build-windows .
-          cmake --build C:\mnt\azure\build-windows --target iree-test-deps
+      # - name: "Building IREE"
+      #   run: |
+      #   cmake -G Ninja -B C:\mnt\azure\build-windows .
+      #   cmake --build C:\mnt\azure\build-windows --target iree-test-deps
       - name: "Install Bash"
         run: |
           $gitPath = "C:\Program Files\Git\bin"
-          $env:PATH = "$gitPath;$env:PATH"
+          $env:PATH += ";C:\Program Files\Git\bin;C:\Program Files\Git\usr\bin"
+          [System.Environment]::GetEnvironmentVariable("PATH", "Process")
           bash --version
       - name: "Testing IREE"
-        run: ./build_tools/cmake/ctest_all.ps1 "C:\mnt\azure\build-windows"
+        run: ctest --test-dir $BUILD_DIR --timeout 900 --output-on-failure -VV
       #- name: "Clean up build dir"
       #  run: Remove-Item -Path "C:\mnt\azure\build-windows" -Recurse -Force
