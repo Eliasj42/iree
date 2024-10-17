@@ -76,6 +76,8 @@ jobs:
           [System.Environment]::GetEnvironmentVariable("PATH", "Process")
           bash --version
       - name: "Testing IREE"
-        run: ctest --test-dir $BUILD_DIR --timeout 900 --output-on-failure -VV
+        run: |
+          $ctestArgs = @("--test-dir", $BUILD_DIR,"--timeout", "900","--output-on-failure","-VV")
+          ctest @ctestArgs
       #- name: "Clean up build dir"
       #  run: Remove-Item -Path "C:\mnt\azure\build-windows" -Recurse -Force
