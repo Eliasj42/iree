@@ -36,6 +36,7 @@ jobs:
       - name: "Installing Python packages"
         run: |
           bash pwd
+          bash ls
           bash "
           python3 -m venv .venv &&
           source .venv/bin/activate &&
