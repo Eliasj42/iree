@@ -29,20 +29,11 @@ jobs:
     env:
       BUILD_DIR: /c/mnt/azure/build-windows
     steps:
-      - name: "test"
-        run: & 'C:\Program Files\Git\bin\bash.exe' pwd
       - name:  "add-path"
-        shell: cmd
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-        run:   |
-          echo ::add-path::"C:\Program Files\Git\bin"
-          dir "C:\Program Files\Git\bin"
-      - name:  "shell: bash.exe"
-        shell: bash
-        run:   |
-          openssl version -d
-          pwd
+        run: |
+          echo $PATH
+          export PATH='/c/Program Files/Git/bin':$PATHz
+          echo $PATH
       - name: "Checking out repository"
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
