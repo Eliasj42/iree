@@ -77,7 +77,7 @@ jobs:
           Test-Path -Path "C:/Program Files/Git/bin/bash.exe"
       - name: Run CTest using Bash
         run: |
-          cmd /c "C:\Program Files\Git\bin\bash.exe -c 'ctest --timeout 900 --test-dir $BUILD_DIR --output-on-failure -VV'"
+          cmd /c ""\"C:\Program Files\Git\bin\bash.exe\"" -c 'ctest --timeout 900 --test-dir $BUILD_DIR --output-on-failure -VV'"
         env:
           BUILD_DIR: C:/mnt/azure/build-windows
       #- name: "Clean up build dir"
