@@ -29,6 +29,16 @@ jobs:
     env:
       BUILD_DIR: /c/mnt/azure/build-windows
     steps:
+      - name:  "add-path"
+        shell: cmd
+        run:   |
+          echo ::add-path::C:\Program Files\Git\bin
+          dir C:\Program Files\Git\bin
+      - name:  "shell: bash.exe"
+        shell: bash
+        run:   |
+          openssl version -d
+          pwd
       - name: "Checking out repository"
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
