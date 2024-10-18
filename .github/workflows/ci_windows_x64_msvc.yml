@@ -35,7 +35,6 @@ jobs:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         run:   |
           echo ::add-path::C:\Program Files\Git\bin
-          echo "$(echo $env:PATH);C:\path\to\your\directory" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8
           dir C:\Program Files\Git\bin
       - name:  "shell: bash.exe"
         shell: bash
