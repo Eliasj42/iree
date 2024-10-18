@@ -35,7 +35,7 @@ jobs:
 
       - name: "Installing Python packages"
         run: |
-          "C:\Program Files\Git\bin\bash.exe" -c "
+          bash "
           python3 -m venv .venv &&
           source .venv/bin/activate &&
           python3 -m pip install -r runtime/bindings/python/iree/runtime/build_requirements.txt
@@ -43,25 +43,25 @@ jobs:
 
       - name: "Installing requirements"
         run: |
-          "C:\Program Files\Git\bin\bash.exe" -c "
+          bash "
           choco install ccache --yes
           "
 
       - name: "Configuring MSVC"
         run: |
-          "C:\Program Files\Git\\bin\bash.exe" -c '
+          bash '
           source <(ilammy/msvc-dev-cmd@v1.13.0 -c "echo" > /tmp/msvc.sh) &&
           source /tmp/msvc.sh
           '
 
       - name: "Building IREE"
         run: |
-          "C:\Program Files\Git\\bin\bash.exe" -c "
+          bash "
           ./build_tools/cmake/build_all.sh ${BUILD_DIR}
           "
 
       - name: "Testing IREE"
         run: |
-          "C:\Program Files\Git\bin\bash.exe" -c "
+          bash "
           ./build_tools/cmake/ctest_all.sh ${BUILD_DIR}
           "
