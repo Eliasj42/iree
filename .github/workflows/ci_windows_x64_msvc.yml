@@ -23,17 +23,15 @@ concurrency:
 jobs:
   windows_x64_msvc:
     runs-on: arc-runner-set
-    defaults:
-      run:
-        shell: 'C:\Program Files\Git\bin\bash.exe'
     env:
       BUILD_DIR: /c/mnt/azure/build-windows
     steps:
-      - name:  "add-path"
+      - name: Add Bash to PATH
         run: |
-          echo $PATH
-          export PATH='/c/Program Files/Git/bin':$PATHz
-          echo $PATH
+          echo "Adding Bash to PATH"
+          echo "C:\Program Files\Git\bin" >> $Env:GITHUB_PATH
+      - name: Verify Bash is in PATH
+        run: bash --version
       - name: "Checking out repository"
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
