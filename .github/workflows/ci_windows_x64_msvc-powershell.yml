@@ -83,7 +83,7 @@ jobs:
           echo "Adding Bash to PATH"
           echo "C:\Program Files\Git\bin" >> $Env:GITHUB_PATH
       - name: "Testing IREE"
-        run: bash -c ./build_tools/cmake/ctest_all.sh "${BUILD_DIR}"
+        run: bash -c ./build_tools/cmake/ctest_all.sh "C:\mnt\azure\build-windows"
         env:
           BUILD_DIR: C:/mnt/azure/build-windows
       #- name: "Clean up build dir"
