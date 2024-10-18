@@ -34,8 +34,8 @@ jobs:
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         run:   |
-          echo ::add-path::C:\Program Files\Git\bin
-          dir C:\Program Files\Git\bin
+          echo ::add-path::"C:\Program Files\Git\bin"
+          dir "C:\Program Files\Git\bin"
       - name:  "shell: bash.exe"
         shell: bash
         run:   |
