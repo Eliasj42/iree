@@ -80,6 +80,5 @@ jobs:
           ctest --timeout 900 --test-dir $BUILD_DIR --output-on-failure -VV
         env:
           BUILD_DIR: C:/mnt/azure/build-windows
-        shell: "C:/Program Files/Git/bin/bash.exe" {0}
       #- name: "Clean up build dir"
       #  run: Remove-Item -Path "C:\mnt\azure\build-windows" -Recurse -Force
