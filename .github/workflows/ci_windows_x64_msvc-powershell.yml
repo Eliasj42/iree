@@ -75,9 +75,13 @@ jobs:
           $env:PATH += ";C:\Program Files\Git\bin;C:\Program Files\Git\usr\bin"
           [System.Environment]::GetEnvironmentVariable("PATH", "Process")
           Test-Path -Path "C:/Program Files/Git/bin/bash.exe"
-      - name: Run CTest using Bash
+      - name: Add Bash to PATH
         run: |
-          powershell -Command "& { cmd /c '\"C:\\Program Files\\Git\\bin\\bash.exe\" -c \"ctest --timeout 900 --test-dir $BUILD_DIR --output-on-failure -VV\"' }"
+          echo "Adding Bash to PATH"
+          echo "C:\Program Files\Git\bin" >> $Env:GITHUB_PATH
+      - name: "Testing IREE"
+        run: bash ./build_tools/cmake/ctest_all.sh "${BUILD_DIR}"
+
         env:
           BUILD_DIR: C:/mnt/azure/build-windows
       #- name: "Clean up build dir"
