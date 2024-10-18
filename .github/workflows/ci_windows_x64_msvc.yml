@@ -27,7 +27,7 @@ jobs:
       run:
         shell: 'C:\Program Files\Git\bin\bash.exe'
     env:
-      BUILD_DIR: build-windows
+      BUILD_DIR: /c/mnt/azure/build-windows
     steps:
       - name: "Checking out repository"
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
@@ -39,7 +39,7 @@ jobs:
           python-version: "3.10" # Needs pybind >= 2.10.1 for Python >= 3.11
       - name: "Installing Python packages"
         run: |
-          python -c "open('runtime/bindings/python/iree/runtime/build_requirements.txt').read()"
+          pwd
           python3 -m venv .venv
           .venv/Scripts/activate.bat
           python3 -m pip install -r runtime/bindings/python/iree/runtime/build_requirements.txt
