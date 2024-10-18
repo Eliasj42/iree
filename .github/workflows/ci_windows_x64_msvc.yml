@@ -39,6 +39,10 @@ jobs:
           python-version: "3.10" # Needs pybind >= 2.10.1 for Python >= 3.11
       - name: "Installing Python packages"
         run: |
+          dir runtime\bindings\python\iree\runtime
+          python -c "open('runtime/bindings/python/iree/runtime/build_requirements.txt').read()"
+          python3 -m venv .venv
+          .venv/Scripts/activate.bat
           python3 -m pip install -r runtime/bindings/python/iree/runtime/build_requirements.txt
       - name: "Installing requirements"
         run: choco install ccache --yes
