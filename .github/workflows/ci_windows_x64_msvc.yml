@@ -29,6 +29,8 @@ jobs:
     env:
       BUILD_DIR: /c/mnt/azure/build-windows
     steps:
+      - name: "test"
+        run: & 'C:\Program Files\Git\bin\bash.exe' pwd
       - name:  "add-path"
         shell: cmd
         env:
