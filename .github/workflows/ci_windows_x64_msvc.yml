@@ -32,6 +32,7 @@ jobs:
       - name:  "add-path"
         shell: cmd
         run:   |
+          setx ACTIONS_ALLOW_UNSECURE_COMMANDS true \m
           echo ::add-path::C:\Program Files\Git\bin
           dir C:\Program Files\Git\bin
       - name:  "shell: bash.exe"
