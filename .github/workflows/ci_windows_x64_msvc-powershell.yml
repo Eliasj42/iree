@@ -84,7 +84,7 @@ jobs:
           echo "C:\Program Files\Git\bin" >> $Env:GITHUB_PATH
       - name: "Testing IREE"
         run: |
-          pwd
-          bash -c ./build_tools/cmake/ctest_all.sh "/c/mnt/azure/build-windows"
+          bash pwd
+          bash ./build_tools/cmake/ctest_all.sh "/c/mnt/azure/build-windows"
       #- name: "Clean up build dir"
       #  run: Remove-Item -Path "C:\mnt\azure\build-windows" -Recurse -Force
