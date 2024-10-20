@@ -7,9 +7,6 @@
 name: CI - Windows x64 MSVC
 
 on:
-  push:
-    branches:
-      - windows-workflow
   schedule:
     # Weekday mornings at 09:15 UTC = 01:15 PST (UTC - 8).
     - cron: "15 9 * * 1-5"
@@ -50,12 +47,12 @@ jobs:
           python3 -m pip install -r runtime/bindings/python/iree/runtime/build_requirements.txt
       - name: "Installing requirements"
         run: choco install ccache --yes
-      - name: "Configuring MSVC 1"
+      - name: "Installing MSVC requirements"
         run: |
           choco install visualstudio2022buildtools -y 
           choco install visualstudio2022community --package-parameters "--add Microsoft.VisualStudio.Workload.CoreEditor --add Microsoft.VisualStudio.Workload.ManagedDesktop --add Microsoft.VisualStudio.Workload.DesktopDevelopmentWithC++" -y
           choco install visualstudio2022-workload-nativedesktop -y
-      - name: "Configuring MSVC 2"
+      - name: "Configuring MSVC"
         uses: ilammy/msvc-dev-cmd@v1.13.0
       - name: "Installing iree reqs"
         run: |
@@ -68,10 +65,6 @@ jobs:
         run: |
           Get-PSDrive | Format-Table Name, Used, Free
           Test-Path C:\mnt\azure
-      #- name: "Building IREE"
-      #  run: |
-      #    cmake -G Ninja -B C:\mnt\azure\build-windows .
-      #    cmake --build C:\mnt\azure\build-windows --target iree-test-deps
       - name: "Install Bash"
         run: |
           $gitPath = "C:\Program Files\Git\bin"
@@ -85,8 +78,6 @@ jobs:
       - name: "Building Iree"
         run: bash ./build_tools/cmake/build_all.sh "/c/mnt/azure/build-windows"
       - name: "Testing IREE"
-        run: |
-          bash pwd
-          bash ./build_tools/cmake/ctest_all.sh "/c/mnt/azure/build-windows"
+        run: bash ./build_tools/cmake/ctest_all.sh "/c/mnt/azure/build-windows"
       - name: "Clean up build dir"
         run: Remove-Item -Path "C:\mnt\azure\build-windows" -Recurse -Force
