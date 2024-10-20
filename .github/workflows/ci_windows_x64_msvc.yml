@@ -68,10 +68,10 @@ jobs:
         run: |
           Get-PSDrive | Format-Table Name, Used, Free
           Test-Path C:\mnt\azure
-      - name: "Building IREE"
-        run: |
-          cmake -G Ninja -B C:\mnt\azure\build-windows .
-          cmake --build C:\mnt\azure\build-windows --target iree-test-deps
+      #- name: "Building IREE"
+      #  run: |
+      #    cmake -G Ninja -B C:\mnt\azure\build-windows .
+      #    cmake --build C:\mnt\azure\build-windows --target iree-test-deps
       - name: "Install Bash"
         run: |
           $gitPath = "C:\Program Files\Git\bin"
@@ -82,6 +82,8 @@ jobs:
         run: |
           echo "Adding Bash to PATH"
           echo "C:\Program Files\Git\bin" >> $Env:GITHUB_PATH
+      - name: "Building Iree"
+        run: bash ./build_tools/cmake/build_all.sh "/c/mnt/azure/build-windows"
       - name: "Testing IREE"
         run: |
           bash pwd
